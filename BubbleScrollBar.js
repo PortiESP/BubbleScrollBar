@@ -28,14 +28,8 @@ export default function BubbleScrollBar(props){
     
     const [scrollData, setScrollData] = React.useState({focus: "section--welcome"})
     let [showScroll, setShowScroll] = React.useState(false)
-    let [timer, setTimer] = React.useState(null)    
-    // Fill the sections object with positions and dimensions
-    let sections = props.sections.map( item => {
-        const dimensions = document.getElementById(item.id).getBoundingClientRect()
-        return ({...item, top: dimensions.y + window.scrollY, bottom: dimensions.bottom + window.scrollY, width: dimensions.width, height: dimensions.height}) 
-    })
-    // Sort array based on the top value
-    sections.sort( (a,b) => a.top - b.top )
+    let [timer, setTimer] = React.useState(null)
+    let sections = props.sections
     
     // Functions
     const resetTimer = () => {
@@ -43,10 +37,18 @@ export default function BubbleScrollBar(props){
         timer && clearTimeout(timer)
         setTimer( setTimeout( ()=>setShowScroll(false), 3000) )
     }
-    
+
     // Setup events
     React.useEffect( ()=>{
 
+        // Fill the sections object with positions and dimensions
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        sections = props.sections.map( item => {
+            const dimensions = document.getElementById(item.id).getBoundingClientRect()
+            return ({...item, top: dimensions.y + window.scrollY, bottom: dimensions.bottom + window.scrollY, width: dimensions.width, height: dimensions.height}) 
+        })
+        // Sort array based on the top value
+        sections.sort( (a,b) => a.top - b.top )
         
 
         // Scroll event
