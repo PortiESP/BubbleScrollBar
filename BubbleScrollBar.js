@@ -15,8 +15,8 @@ function BubbleScrollItem(props){
 
     return (
         <div className={focusClass} onClick={itemClick} >
-            <div className="div--BubbleScrollItem-label" style={props.styleLabel}>
-                <a href={`#${props.id}`} className="a--BubbleScrollItem-label">{props.label}</a>
+            <div className="div--BubbleScrollItem-label" >
+                <a href={`#${props.id}`} className="a--BubbleScrollItem-label" style={props.styleLabel}>{props.label} </a>
             </div>
             {
                 !props.disableBubble ?
