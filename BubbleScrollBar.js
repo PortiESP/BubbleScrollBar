@@ -28,23 +28,31 @@ export default function BubbleScrollBar(props){
     
     const [scrollData, setScrollData] = React.useState({focus: "section--welcome"})
     let [showScroll, setShowScroll] = React.useState(false)
-    let [timer, setTimer] = React.useState(null)
-    const {sections} = props
-
+    let [timer, setTimer] = React.useState(null)    
+    // Fill the sections object with positions and dimensions
+    let sections = props.sections.map( item => {
+        const dimensions = document.getElementById(item.id).getBoundingClientRect()
+        return ({...item, top: dimensions.y + window.scrollY, bottom: dimensions.bottom + window.scrollY, width: dimensions.width, height: dimensions.height}) 
+    })
+    // Sort array based on the top value
+    sections.sort( (a,b) => a.top - b.top )
+    
     // Functions
     const resetTimer = () => {
         setShowScroll(true)
         timer && clearTimeout(timer)
-        setTimer( setTimeout( ()=>setShowScroll(false), 5000) )
+        setTimer( setTimeout( ()=>setShowScroll(false), 3000) )
     }
     
-    // setTimersList(3)
     // Setup events
     React.useEffect( ()=>{
+
+        
+
         // Scroll event
-        function scrollEvent(){   
+        const scrollEvent = () => {   
             // Variables
-            const sectionIndex = window.screenY >= 0 ? Math.floor( (window.scrollY+(window.innerHeight/2)) / window.innerHeight) : 0
+            const sectionIndex = sections.findIndex( item => item.bottom - (item.height > 500 ? 400 : Math.floor(item.height/2)) >= window.scrollY)
             const newSection = sections[sectionIndex].id
 
             // Update section
