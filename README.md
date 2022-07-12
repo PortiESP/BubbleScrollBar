@@ -21,7 +21,7 @@ import BubbleScrollBar from "./BubbleScrollBar/BubbleScrollBar"
 
 # Props
 
-> - `sections`  A list of HTML IDs of the elements we want to appear in the scrollbar
+> - `sections`  Takes an array of objects as show [here](#sections-object-structure)
 
 ## `sections` object structure
 
@@ -50,3 +50,9 @@ const sectionsData = [
     }
 ]
 ```
+
+## Media
+
+- **Zoomed screenshot**
+
+!["Zoomed screenshot"](./screenshots/zoomScreenshot.png "Zoomed screenshot")
