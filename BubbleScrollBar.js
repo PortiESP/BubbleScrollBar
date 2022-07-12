@@ -11,8 +11,6 @@ function BubbleScrollItem(props){
     
     let focusClass = `div--BubbleScrollItem ${scrollData.focus === props.id ? "focusing": ""}`
     
-    console.log(props.styleLabel)
-
     return (
         <div className={focusClass} onClick={itemClick} >
             <div className="div--BubbleScrollItem-label" >
