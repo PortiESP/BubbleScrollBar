@@ -5,8 +5,8 @@ html {
 .div--BubbleScrollBar {
   position: fixed;
   top: 50%;
-  transform: translateY(-50%);
   right: 20px;
+  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
 }
