@@ -1,0 +1,53 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.div--BubbleScrollBar {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+}
+
+.div--BubbleScrollItem {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9em;
+}
+.div--BubbleScrollItem .div--BubbleScrollItem-label {
+  width: 100%;
+  margin-right: 20px;
+  text-align: center;
+  color: #adadad;
+}
+.div--BubbleScrollItem .div--BubbleScrollItem-label a {
+  display: block;
+  width: 100%;
+  padding: 5px 20px;
+  background-color: rgba(74, 74, 74, 0.4117647059);
+  text-decoration: none;
+  color: inherit;
+  border-radius: 15px;
+}
+.div--BubbleScrollItem .span--BubbleScrollItem-decoration-bubble {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(74, 74, 74, 0.768627451);
+  border-radius: 50%;
+  transition: all 0.1s ease;
+}
+.div--BubbleScrollItem.focusing {
+  color: #eee;
+  filter: brightness(150%);
+}
+.div--BubbleScrollItem.focusing .span--BubbleScrollItem-decoration-bubble {
+  transform: scale(180%);
+}
+.div--BubbleScrollItem:hover {
+  filter: brightness(170%);
+}/*# sourceMappingURL=style.css.map */
