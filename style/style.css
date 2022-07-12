@@ -2,13 +2,19 @@ html {
   scroll-behavior: smooth;
 }
 
-.div--BubbleScrollBar {
+.div--BubbleScrollBar-zone {
   position: fixed;
   top: 50%;
   right: 20px;
   transform: translateY(-50%);
+}
+
+.div--BubbleScrollBar {
+  position: relative;
+  right: 0px;
   display: flex;
   flex-direction: column;
+  transition: all 0.2s linear;
 }
 
 .div--BubbleScrollItem {
@@ -25,6 +31,7 @@ html {
   color: #adadad;
 }
 .div--BubbleScrollItem .div--BubbleScrollItem-label a {
+  position: relative;
   display: block;
   width: 100%;
   padding: 5px 20px;
@@ -50,4 +57,8 @@ html {
 }
 .div--BubbleScrollItem:hover {
   filter: brightness(170%);
+}
+
+.hide {
+  right: -110%;
 }/*# sourceMappingURL=style.css.map */

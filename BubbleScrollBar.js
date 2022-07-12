@@ -26,26 +26,32 @@ function BubbleScrollItem(props){
 
 export default function BubbleScrollBar(props){
     
-    // const [focus, setFocus] = React.useState("section--welcome")
-    const [scrollData, setScrollData] = React.useState({focus: "section--welcome", show: true, timer: null})
+    const [scrollData, setScrollData] = React.useState({focus: "section--welcome"})
+    let [showScroll, setShowScroll] = React.useState(false)
+    let [timer, setTimer] = React.useState(null)
     const {sections} = props
+
+    // Functions
+    const resetTimer = () => {
+        setShowScroll(true)
+        timer && clearTimeout(timer)
+        setTimer( setTimeout( ()=>setShowScroll(false), 5000) )
+    }
     
+    // setTimersList(3)
     // Setup events
     React.useEffect( ()=>{
         // Scroll event
         function scrollEvent(){   
+            // Variables
             const sectionIndex = window.screenY >= 0 ? Math.floor( (window.scrollY+(window.innerHeight/2)) / window.innerHeight) : 0
             const newSection = sections[sectionIndex].id
-            
-            setScrollData( oldData => ({...oldData, focus: newSection}) )
 
-            // setShowScrollBar(true)
-            // hideTimer && clearTimeout(hideTimer)
-            // hideTimer = setTimeout(()=> setShowScrollBar(false), 5000)
+            // Update section
+            setScrollData( oldData => ({...oldData, focus: newSection}) ) 
         }
-       window.addEventListener("scroll", scrollEvent)
+        window.addEventListener("scroll", scrollEvent)
 
-        // ScrollBar hide timer
 
         // Effect cleaner
         return ()=>{
@@ -53,6 +59,12 @@ export default function BubbleScrollBar(props){
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    React.useEffect( ()=>{
+        resetTimer()
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [scrollData.focus])
 
     // Create list JSX elements
     const computedSections = sections.map( data => <BubbleScrollItem 
@@ -66,8 +78,10 @@ export default function BubbleScrollBar(props){
                                                     /> )
 
     return (
-        <div className="div--BubbleScrollBar" style={props.styleTOC}>
-            {computedSections}
+        <div className="div--BubbleScrollBar-zone" onMouseOver={resetTimer}>
+            <div className={"div--BubbleScrollBar" + (!showScroll ? " hide": "")} style={props.styleScroll}>
+                {computedSections}
+            </div>
         </div>
     )
 }
