@@ -5,6 +5,13 @@ This tool allow the user to create a custom scrollbar for any site, the tool wil
 
 ![Site screenshot](screenshots/siteScreenshot.png "Example site screenshot")
 
+### Features
+
+- Easy tag selection by id
+- Customizable style and decorations
+- Auto sorting items by its order in page
+- Automatic hiding after few seconds but prevent it when user hovers it
+
 
 # Implementation
 
