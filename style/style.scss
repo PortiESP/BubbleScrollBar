@@ -1,0 +1,66 @@
+html{
+    scroll-behavior: smooth;
+}
+
+.div--BubbleScrollBar {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+}
+
+.div--BubbleScrollItem{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .9em;
+
+    & .div--BubbleScrollItem-label {
+        width: 100%;
+        margin-right: 20px;
+        
+        text-align: center;
+        color: #adadad;
+        
+        & a{
+            display: block;
+            width: 100%;
+            padding: 5px 20px;
+            
+            background-color: #4a4a4a69;
+            text-decoration: none;
+            color: inherit;
+            border-radius: 15px;
+        }
+    }
+
+
+    // Item decoration styles
+    & .span--BubbleScrollItem-decoration-bubble{
+        display: block;
+        width: 20px;
+        height: 20px;
+        background-color: #4A4A4AC4;
+        border-radius: 50%;
+
+        transition: all .1s ease;
+
+    }
+
+    &.focusing{
+        color: #eee;
+        filter: brightness(150%);
+
+        
+        & .span--BubbleScrollItem-decoration-bubble{
+            transform: scale(180%);
+        }
+    }
+
+    &:hover{
+        filter: brightness(170%);
+    }
+}
