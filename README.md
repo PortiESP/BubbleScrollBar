@@ -1,14 +1,14 @@
 
 # BubbleScrollBar documentation
 
-This tool allow the user to create a custom scrollbar for any site, the tool will remove the default scrollbar and it will be replaced with a fixed element placed at the right side of the screen.
+This tool allow the user to create a custom scrollbar for any site, the tool will remove the default scrollbar and it will be replaced with a fixed element placed at the right side of the screen with a TOC (Table Of Concepts).
 
 ![Site screenshot](screenshots/siteScreenshot.png "Example site screenshot")
 
 
 # Implementation
 
-Just add the component to your JSX code and the element will be positioned as *fixed* in the right side of the screen
+Just clone the repo inside your project, import the `BubbleScrollBar.js` file add the component to your JSX code and the element will be positioned as *fixed* in the right side of the screen
 
 *Import library*
 ```javascript
@@ -22,6 +22,10 @@ import BubbleScrollBar from "./BubbleScrollBar/BubbleScrollBar"
 # Props
 
 > - `sections`  Takes an array of objects as show [here](#sections-object-structure)
+> - `styleTOC`  Adds custom styles to the TOC, *takes an object with css properties*
+> - `styleLabel`  Adds custom styles to the label of each item of the TOC, *takes an object with css properties*
+> - `styleDecoration`  Adds custom styles to the decoration bubble of each item of the TOC, *takes an object with css properties*
+> - `disableBubble`  Removes the *bubble* element from the TOC and leave just the label, *takes a boolean*
 
 ## `sections` object structure
 

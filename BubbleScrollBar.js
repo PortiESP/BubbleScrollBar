@@ -11,14 +11,20 @@ function BubbleScrollItem(props){
     
     let focusClass = `div--BubbleScrollItem ${scrollData.focus === props.id ? "focusing": ""}`
     
+    console.log(props.styleLabel)
+
     return (
-        <div className={focusClass} onClick={itemClick}>
-            <div className="div--BubbleScrollItem-label">
+        <div className={focusClass} onClick={itemClick} >
+            <div className="div--BubbleScrollItem-label" style={props.styleLabel}>
                 <a href={`#${props.id}`} className="a--BubbleScrollItem-label">{props.label}</a>
             </div>
-            <div className="div--BubbleScrollItem-decoration-bubble">
-                <span className="span--BubbleScrollItem-decoration-bubble"></span>
-            </div>
+            {
+                !props.disableBubble ?
+                    <div className="div--BubbleScrollItem-decoration-bubble" style={props.styleDecoration}>
+                        <span className="span--BubbleScrollItem-decoration-bubble"></span>
+                    </div>
+                 : ""
+            }
         </div>
     )
 }
@@ -34,7 +40,6 @@ export default function BubbleScrollBar(props){
         // Scroll event
         function scrollEvent(){   
             const sectionIndex = window.screenY >= 0 ? Math.floor( (window.scrollY+(window.innerHeight/2)) / window.innerHeight) : 0
-            console.log(sectionIndex)
             const newSection = sections[sectionIndex].id
             
             setScrollData( oldData => ({...oldData, focus: newSection}) )
@@ -55,10 +60,18 @@ export default function BubbleScrollBar(props){
     }, [])
 
     // Create list JSX elements
-    const computedSections = sections.map( data => <BubbleScrollItem key={data.id} label={data.label} id={data.id} scrollData={[scrollData, setScrollData]}/> )
+    const computedSections = sections.map( data => <BubbleScrollItem 
+                                                        key={data.id} 
+                                                        label={data.label} 
+                                                        id={data.id} 
+                                                        scrollData={[scrollData, setScrollData]}
+                                                        disableBubble={props.disableBubble}
+                                                        styleLabel={props.styleLabel}
+                                                        styleDecoration={props.styleDecoration}
+                                                    /> )
 
     return (
-        <div className="div--BubbleScrollBar">
+        <div className="div--BubbleScrollBar" style={props.styleTOC}>
             {computedSections}
         </div>
     )
