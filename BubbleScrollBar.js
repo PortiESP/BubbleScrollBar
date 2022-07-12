@@ -3,18 +3,15 @@ import "./style/style.css"
 
 function BubbleScrollItem(props){
 
-    const [scrollData, setScrollData] = props.scrollData
-    
-    function itemClick(event){
-        setScrollData( oldData => ({...oldData, focus: event.target.href.split("#")[1]}))
-    }
+    const scrollData = props.scrollData[0]
+    const $link = React.useRef(null)
     
     let focusClass = `div--BubbleScrollItem ${scrollData.focus === props.id ? "focusing": ""}`
     
     return (
-        <div className={focusClass} onClick={itemClick} >
+        <div  className={focusClass} onClick={ ()=> $link.current.click()} >
             <div className="div--BubbleScrollItem-label" >
-                <a href={`#${props.id}`} className="a--BubbleScrollItem-label" style={props.styleLabel}>{props.label} </a>
+                <a ref={$link} href={`#${props.id}`} className="a--BubbleScrollItem-label" style={props.styleLabel}>{props.label} </a>
             </div>
             {
                 !props.disableBubble ?
