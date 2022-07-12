@@ -55,6 +55,10 @@ const sectionsData = [
 ]
 ```
 
+## Style
+
+> The component can be customized with the style props but since the module is cloned, you can edit the css files
+
 ## Media
 
 - **Zoomed screenshot**
