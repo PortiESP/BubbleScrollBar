@@ -1,7 +1,5 @@
-html{
-    scroll-behavior: smooth;
-}
-.div--BubbleScrollBar-zone{
+
+.div__BubbleScrollBar_zone{
     position: fixed;
     top: 50%;
     right: 20px;
@@ -11,7 +9,7 @@ html{
     // background: red;
 
 }
-.div--BubbleScrollBar {
+.div__BubbleScrollBar {
     position: relative;
     right: 0px;
     display: flex;
@@ -20,14 +18,14 @@ html{
     transition: all .2s linear;
 }
 
-.div--BubbleScrollItem{
+.div__BubbleScrollItem{
     padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: .9em;
 
-    & .div--BubbleScrollItem-label {
+    & .div__BubbleScrollItem_label {
         width: 100%;
         margin-right: 20px;
         
@@ -49,7 +47,7 @@ html{
 
 
     // Item decoration styles
-    & .span--BubbleScrollItem-decoration-bubble{
+    & .span__BubbleScrollItem_decoration_bubble{
         display: block;
         width: 20px;
         height: 20px;
@@ -65,7 +63,7 @@ html{
         filter: brightness(150%);
 
         
-        & .span--BubbleScrollItem-decoration-bubble{
+        & .span__BubbleScrollItem_decoration_bubble{
             transform: scale(180%);
         }
     }

@@ -1,22 +1,22 @@
 import React from "react"
-import "./style/style.css"
+import sass from "./style/style.module.scss"
 
 function BubbleScrollItem(props){
 
     const scrollData = props.scrollData[0]
     const $link = React.useRef(null)
     
-    let focusClass = `div--BubbleScrollItem ${scrollData.focus === props.id ? "focusing": ""}`
+    let focusClass = `${sass.div__BubbleScrollItem} ${scrollData.focus === props.id ? sass.focusing: ""}`
     
     return (
         <div  className={focusClass} onClick={ ()=> $link.current.click()} >
-            <div className="div--BubbleScrollItem-label" >
-                <a ref={$link} href={`#${props.id}`} className="a--BubbleScrollItem-label" style={props.styleLabel}>{props.label} </a>
+            <div className={sass.div__BubbleScrollItem_label} >
+                <a ref={$link} href={`#${props.id}`} className={sass.a__BubbleScrollItem_label} style={props.styleLabel}>{props.label} </a>
             </div>
             {
                 !props.disableBubble ?
-                    <div className="div--BubbleScrollItem-decoration-bubble" style={props.styleDecoration}>
-                        <span className="span--BubbleScrollItem-decoration-bubble"></span>
+                    <div className={sass.div__BubbleScrollItem_decoration_bubble} style={props.styleDecoration}>
+                        <span className={sass.span__BubbleScrollItem_decoration_bubble}></span>
                     </div>
                  : ""
             }
@@ -40,6 +40,10 @@ export default function BubbleScrollBar(props){
 
     // Setup events
     React.useEffect( ()=>{
+
+        // Allow smooth scroll
+        document.querySelector("html").style.scrollBehavior = "smooth"
+        
 
         // Fill the sections object with positions and dimensions
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -67,6 +71,10 @@ export default function BubbleScrollBar(props){
         return ()=>{
             window.removeEventListener("scroll", scrollEvent)
         }
+
+        
+
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -88,8 +96,8 @@ export default function BubbleScrollBar(props){
                                                     /> )
 
     return (
-        <div className="div--BubbleScrollBar-zone" onMouseOver={resetTimer}>
-            <div className={"div--BubbleScrollBar" + (!showScroll ? " hide": "")} style={props.styleScroll}>
+        <div className={sass.div__BubbleScrollBar_zone} onMouseOver={resetTimer}>
+            <div className={`${sass.div__BubbleScrollBar} ${(!showScroll ? sass.hide: "")}`} style={props.styleScroll}>
                 {computedSections}
             </div>
         </div>
