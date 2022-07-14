@@ -78,7 +78,6 @@ export default function BubbleScrollBar(props){
 
     React.useEffect( ()=>{
         resetTimer()
-        location.hash = scrollData.focus
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [scrollData.focus])
