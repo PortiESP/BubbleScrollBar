@@ -1,8 +1,10 @@
 
 .div__BubbleScrollBar_zone{
     position: fixed;
+    width: 20px;
+    height: 500px;
     top: 50%;
-    right: 20px;
+    right: 0px;
     transform: translateY(-50%);
     // min-width: 50px;
     // min-height: 200px;
@@ -11,8 +13,10 @@
 
 }
 .div__BubbleScrollBar {
-    position: relative;
-    right: 0px;
+    position: absolute;
+    width: 300px;
+    top: 0;
+    right: 30px;
     display: flex;
     flex-direction: column;
     
@@ -75,5 +79,5 @@
 }
 
 .hide{
-    right: -110%;
+    right: -600px;
 }
