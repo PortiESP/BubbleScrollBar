@@ -59,7 +59,7 @@ export default function BubbleScrollBar(props){
         const scrollEvent = () => {   
             // Variables
             const sectionIndex = sections.findIndex( item => item.bottom - (item.height > 500 ? 400 : Math.floor(item.height/2)) >= window.scrollY)
-            const newSection = sections[sectionIndex].id
+            const newSection = sections[sectionIndex] && sections[sectionIndex].id || sections[sectionIndex-1]
 
             // Update section
             setScrollData( oldData => ({...oldData, focus: newSection}) ) 
