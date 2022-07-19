@@ -35,7 +35,7 @@ export default function BubbleScrollBar(props){
     const resetTimer = () => {
         setShowScroll(true)
         timer && clearTimeout(timer)
-        setTimer( setTimeout( ()=>setShowScroll(false), 3000) )
+        setTimer( setTimeout( ()=>setShowScroll(false), 2000) )
     }
 
     // Setup events
