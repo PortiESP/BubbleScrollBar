@@ -22,6 +22,8 @@ Just clone the repo inside your project, import the `BubbleScrollBar.js` file ad
 import BubbleScrollBar from "./BubbleScrollBar/BubbleScrollBar"
 ```
 *Add component*
+
+> Its **recommended** to add it at the end of your page to ensure that every component is already rendered
 ```jsx
 <BubbleScrollBar sections={sectionsData}/>
 ```
