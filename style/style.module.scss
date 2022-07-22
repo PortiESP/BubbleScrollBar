@@ -25,14 +25,15 @@
 .div__BubbleScrollItem{
     padding: 10px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     font-size: .9em;
 
     & .div__BubbleScrollItem_label {
-        width: 100%;
+        // width: 100%;
         margin-right: 20px;
-        
+        // margin: auto;
+
         text-align: center;
         color: #adadad;
         
