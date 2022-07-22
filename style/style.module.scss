@@ -6,17 +6,16 @@
     top: 50%;
     right: 0px;
     transform: translateY(-50%);
-    // min-width: 50px;
-    // min-height: 200px;
-    // background: red;
+    
     z-index: 1000;
 
 }
 .div__BubbleScrollBar {
     position: absolute;
     width: 300px;
-    top: 0;
+    top: 50%;
     right: 30px;
+    transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     
