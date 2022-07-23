@@ -79,5 +79,34 @@
 }
 
 .hide{
-    right: -600px;
+    // right: -600px;
+    // right: 0;
+}
+
+
+@media(max-width: 600px){
+
+    .div__BubbleScrollBar{
+        right: -15px;  
+
+    }
+    .div__BubbleScrollItem{
+        // padding: 10px 0;
+
+        & .div__BubbleScrollItem_label{
+            margin-right: 10px;
+
+            & a{
+                padding: 2px 12px;
+            }
+        }
+
+
+        & .span__BubbleScrollItem_decoration_bubble{
+            width: 10px;
+            height: 10px;
+        }
+    }
+
+
 }
