@@ -5,13 +5,27 @@ function BubbleScrollItem(props){
 
     const scrollData = props.scrollData[0]
     const $link = React.useRef(null)
+
+    const draggingItem = (e) => {
+        if(!e.clientY) return false
+        e.preventDefault()
+
+        document.querySelector("html").style.scrollBehavior = ""
+        
+        const scrollValue = e.clientY / ( window.innerHeight*.9 ) * document.body.scrollHeight - 1000
+        console.log(scrollValue, document.body.style.scrollBehavior, e.target)
+        window.scrollTo(0, scrollValue)
+        
+        document.querySelector("html").style.scrollBehavior = "smooth"
+
+    }   
     
     let focusClass = `${sass.div__BubbleScrollItem} ${scrollData.focus === props.id ? sass.focusing: ""}`
     
     return (
         <div  className={focusClass} onClick={ ()=> $link.current.click()} >
             <div className={sass.div__BubbleScrollItem_label} >
-                <a ref={$link} href={`#${props.id}`} className={sass.a__BubbleScrollItem_label} style={props.styleLabel}>{props.label} </a>
+                <a ref={$link} href={`#${props.id}`} className={sass.a__BubbleScrollItem_label} style={props.styleLabel} draggable="true">{props.label} </a>
             </div>
             {
                 !props.disableBubble ?
@@ -20,6 +34,7 @@ function BubbleScrollItem(props){
                     </div>
                  : ""
             }
+            <div className={sass.div__dragzone} onDrag={draggingItem} draggable="true"></div>
         </div>
     )
 }
@@ -27,8 +42,8 @@ function BubbleScrollItem(props){
 export default function BubbleScrollBar(props){
     
     const [scrollData, setScrollData] = React.useState({focus: "section--welcome"})
-    let [showScroll, setShowScroll] = React.useState(false)
-    let [timer, setTimer] = React.useState(null)
+    const [showScroll, setShowScroll] = React.useState(false)
+    const [timer, setTimer] = React.useState(null)
     let sections = props.sections
     
     // Functions
@@ -38,12 +53,14 @@ export default function BubbleScrollBar(props){
         setTimer( setTimeout( ()=>setShowScroll(false), 2000) )
     }
 
+     
+
     // Setup events
     React.useEffect( ()=>{
 
         // Allow smooth scroll
         document.querySelector("html").style.scrollBehavior = "smooth"
-        
+ 
 
         // Fill the sections object with positions and dimensions
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -92,10 +109,17 @@ export default function BubbleScrollBar(props){
                                                         disableBubble={props.disableBubble}
                                                         styleLabel={props.styleLabel}
                                                         styleDecoration={props.styleDecoration}
+                                                        
                                                     /> )
 
     return (
-        <div className={sass.div__BubbleScrollBar_zone} onMouseOver={resetTimer}>
+        <div className={sass.div__BubbleScrollBar_zone} onMouseOver={resetTimer} 
+            onDragOver={ e=> {
+                e.preventDefault()
+                e.dataTransfer.effectAllowed = "none"
+                e.target.style.cursor = "pointer"
+            }}
+            >
             <div className={`${sass.div__BubbleScrollBar} ${(!showScroll ? sass.hide: "")}`} style={props.styleScroll}>
                 {computedSections}
             </div>
