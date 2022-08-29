@@ -11,6 +11,7 @@ This tool allow the user to create a custom scrollbar for any site, the tool wil
 - Customizable style and decorations
 - Auto sorting items by its order in page
 - Automatic hiding after few seconds but prevent it when user hovers it
+- Drag an item to scroll the page (scroll coordenate relative to the Y possition in the viewport)
 
 
 # Implementation
