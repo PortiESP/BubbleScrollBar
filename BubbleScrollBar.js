@@ -25,7 +25,7 @@ function BubbleScrollItem(props){
     return (
         <div  className={focusClass} onClick={ ()=> $link.current.click()} >
             <div className={sass.div__BubbleScrollItem_label} >
-                <a ref={$link} href={`#${props.id}`} className={sass.a__BubbleScrollItem_label} style={props.styleLabel} draggable="true">{props.label} </a>
+                <a ref={$link} href={`#${props.id}`} className={sass.a__BubbleScrollItem_label} style={props.styleLabel} draggable="true">{props.label}</a>
             </div>
             {
                 !props.disableBubble ?
@@ -34,7 +34,7 @@ function BubbleScrollItem(props){
                     </div>
                  : ""
             }
-            <div className={sass.div__dragzone} onDrag={draggingItem} draggable="true"></div>
+            <div className={sass.div__dragzone} onDrag={draggingItem} draggable="true" onDragStart={ e => e.dataTransfer.effectAllowed = "move" }></div>
         </div>
     )
 }
@@ -109,7 +109,6 @@ export default function BubbleScrollBar(props){
                                                         disableBubble={props.disableBubble}
                                                         styleLabel={props.styleLabel}
                                                         styleDecoration={props.styleDecoration}
-                                                        
                                                     /> )
 
     return (
