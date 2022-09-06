@@ -78,9 +78,10 @@ export default function BubbleScrollBar(props){
             // Here is where gets deceided in wich section your are
             const sectionIndex = sections.findIndex( item => item.bottom >= window.scrollY + (window.innerHeight / 2))
             const newSection = sections[sectionIndex] && sections[sectionIndex].id || sections[sectionIndex-1]
+            const newSectionLabel = sections[sectionIndex] && sections[sectionIndex].label || sections[sectionIndex-1]
 
             // Update section
-            setScrollData( oldData => ({...oldData, focus: newSection}) ) 
+            setScrollData( oldData => ({...oldData, focus: newSection, label: newSectionLabel}) ) 
         }
         window.addEventListener("scroll", scrollEvent)
 
@@ -96,6 +97,7 @@ export default function BubbleScrollBar(props){
 
     React.useEffect( ()=>{
         resetTimer()
+        props.sectionCallback && props.sectionCallback(scrollData.label)
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [scrollData.focus])
@@ -111,7 +113,8 @@ export default function BubbleScrollBar(props){
                                                         styleDecoration={props.styleDecoration}
                                                     /> )
 
-    return (
+    return !props.hide && (
+        
         <div className={sass.div__BubbleScrollBar_zone} onMouseOver={resetTimer} 
             onDragOver={ e=> {
                 e.preventDefault()

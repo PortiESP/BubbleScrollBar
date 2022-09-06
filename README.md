@@ -36,6 +36,8 @@ import BubbleScrollBar from "./BubbleScrollBar/BubbleScrollBar"
 > - `styleLabel`  Adds custom styles to the label of each item of the TOC, *takes an object with css properties*
 > - `styleDecoration`  Adds custom styles to the decoration bubble of each item of the TOC, *takes an object with css properties*
 > - `disableBubble`  Removes the *bubble* element from the TOC and leave just the label, *takes a boolean*
+> - `hide`  Hides all the injected HTML
+> - `sectionCallback`  Executes a function every time the section changes
 
 ## `sections` object structure
 
