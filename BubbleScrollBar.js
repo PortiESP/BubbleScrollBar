@@ -15,7 +15,6 @@ function BubbleScrollItem(props){
         document.querySelector("html").style.scrollBehavior = ""
         
         const scrollValue = e.clientY / ( window.innerHeight*.9 ) * document.body.scrollHeight - 1000
-        console.log(scrollValue, document.body.style.scrollBehavior, e.target)
         window.scrollTo(0, scrollValue)
         
         document.querySelector("html").style.scrollBehavior = "smooth"
